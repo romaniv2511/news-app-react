@@ -12,7 +12,7 @@ export const App = () => {
   }, []);
 
   const onChangeFilter = value => {
-    setFilter(value);
+    setFilter(value.toLowerCase());
   };
 
   const filteredNews = () => {
@@ -23,13 +23,13 @@ export const App = () => {
         return currentNews;
       }
 
-      const splitedFilter = filter.toLowerCase().split(' ');
+      const splitedFilter = filter.split(' ');
 
       const filteredCurrentNews = splitedFilter.reduce((acc, filter) => {
-        if (
+        const isFiltered =
           title.toLowerCase().includes(filter) ||
-          summary.toLowerCase().includes(filter)
-        ) {
+          summary.toLowerCase().includes(filter);
+        if (isFiltered) {
           acc = currentNews;
         }
         return acc;
@@ -38,34 +38,12 @@ export const App = () => {
       return filteredCurrentNews;
     });
   };
-  // console.log(filteredNews());
+
   return (
     <div>
       <h1>News</h1>
       <Filter onChange={onChangeFilter} />
-      <NewsList news={filteredNews()} />
+      <NewsList news={filteredNews()} filter={filter} />
     </div>
   );
 };
-
-// const hightlight = (filter, str) => {
-//   // const { filter, str } = props;
-//   if (!filter) return str;
-
-//   const regexp = new RegExp(filter, 'ig');
-//   const matchValue = str.match(regexp);
-//   // console.log('regexp', regexp);
-//   if (matchValue) {
-//     return str.split(regexp).map((s, idx, arr) => {
-//       if (idx < arr.length - 1) {
-//         const c = matchValue.shift();
-//         console.log('c', c);
-//         console.log('s', s);
-//         return `
-//             ${s}
-//             <span style={{ backgroundColor: 'yellow' }}>${c}</span>${s}`;
-//       }
-//     });
-//   }
-//   return str;
-// };
