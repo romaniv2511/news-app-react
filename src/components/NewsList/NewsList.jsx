@@ -1,76 +1,41 @@
-import { useCallback } from 'react';
+import { NewsArticle } from 'components/NewsArticle/NewsArtirle';
+import { useSelector } from 'react-redux';
+import { selectFilter } from 'redux/filter/filterSelectors';
 
-const Hightlight = props => {
-  const { filter, str } = props;
-  if (!filter) return str;
+import { useNews } from 'hooks/useNews';
 
-  const splitedFilter = filter.split(' ');
+export const NewsList = () => {
+  const { news } = useNews();
+  const filter = useSelector(selectFilter);
 
-  const filtredStr = splitedFilter.reduce((acc, f) => {
-    if (!f) return acc;
+  const onFilterNews = () => {
+    const splitedFilter = filter.split(' ');
+    const regexp = new RegExp(splitedFilter.join('|'), 'ig');
 
-    if (!acc) acc = str;
+    return news.filter(currentNews => {
+      const { title, summary } = currentNews;
 
-    const regexp = new RegExp(f, 'ig');
-    const matchValue = str.match(regexp);
+      const matchesTitle = [...title.matchAll(regexp)];
+      const matchesSummary = [
+        ...summary.matchAll(new RegExp(splitedFilter.join('|'), 'ig')),
+      ];
+      const isFiltered = matchesTitle.length > 0 || matchesSummary.length > 0;
 
-    if (matchValue) {
-      return acc
-        .split(regexp)
-        .map((s, index, array) => {
-          if (index < array.length - 1) {
-            const filteredValue = matchValue.shift();
-            return `${s}*|${filteredValue}*`;
-          }
-          return s;
-        })
-        .join('');
-    }
-    return acc;
-  }, '');
+      if (isFiltered) return currentNews;
+    });
+  };
 
-  return filtredStr.split('*').reduce((acc, text) => {
-    if (text.includes('|')) {
-      const currentText = text.slice(1, text.length);
-      return (
-        <>
-          {acc}
-          <mark>{currentText}</mark>
-        </>
-      );
-    }
-    return (
-      <>
-        {acc}
-        {text}
-      </>
-    );
-  });
-};
-
-export const NewsList = ({ news, filter }) => {
-  const light = useCallback(
-    str => {
-      return <Hightlight filter={filter} str={str} />;
-    },
-    [filter]
-  );
-
-  if (!news) return;
+  const filteredNews = onFilterNews();
 
   return (
-    <ul>
-      {news.map(({ id, imageUrl, title, summary }) => {
+    <ol>
+      {filteredNews.map(item => {
         return (
-          <li key={id}>
-            <article>
-              <img src={imageUrl} alt={title} width="300" />
-              <h2>{light(title)}</h2>
-              <p>{light(summary)}</p>
-            </article>
+          <li key={item.id}>
+            <NewsArticle news={item} />
           </li>
         );
       })}
-    </ul>
+    </ol>
   );
 };
