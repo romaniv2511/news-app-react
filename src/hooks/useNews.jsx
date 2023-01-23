@@ -6,9 +6,9 @@ import {
 } from 'redux/news/newsSelectors';
 
 export const useNews = () => {
-  const isLoggedIn = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const news = useSelector(selectNews);
 
-  return { isLoggedIn, error, news };
+  return { isLoading, error, news };
 };

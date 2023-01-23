@@ -8,14 +8,18 @@ export const fetchNews = createAsyncThunk(
   'news/fetchAll',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get('/v3/articles?_limit=10');
-      const news = data.map(({ id, imageUrl, title, summary, url }) => ({
-        id,
-        imageUrl,
-        title,
-        summary,
-        url,
-      }));
+      const { data } = await axios.get('/v3/articles?_limit=20');
+      console.log(data);
+      const news = data.map(
+        ({ id, imageUrl, title, summary, url, publishedAt }) => ({
+          id,
+          imageUrl,
+          title,
+          summary,
+          url,
+          publishedAt,
+        })
+      );
       return news;
     } catch (error) {
       return rejectWithValue(error.message);

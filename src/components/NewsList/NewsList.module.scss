@@ -1,0 +1,13 @@
+.counter {
+  margin-bottom: 45px;
+  border-bottom: 1px solid #eaeaea;
+
+  font-weight: 600;
+}
+.list {
+  align-content: center;
+  gap: 45px;
+}
+.item {
+  width: calc((100% - 90px) / 3);
+}

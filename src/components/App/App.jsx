@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchNews } from '../redux/news/newsOperations';
+import { useDispatch } from 'react-redux';
+import { fetchNews } from 'redux/news/newsOperations';
 import { useNews } from 'hooks/useNews';
-import { Filter } from './Filter/Filter';
-import { NewsList } from './NewsList/NewsList';
+import { Filter } from '../Filter/Filter';
+import { NewsList } from '../NewsList/NewsList';
+
+import classes from './App.module.scss';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ export const App = () => {
   const isVisibleNews = !isLoading && !error;
 
   return (
-    <div>
+    <div className={classes.container}>
       {isLoading && <p>Loading...</p>}
       {isVisibleNews && (
         <>

@@ -4,6 +4,9 @@ import { selectFilter } from 'redux/filter/filterSelectors';
 
 import { useNews } from 'hooks/useNews';
 
+import { Grid } from '@mui/material';
+import classes from './NewsList.module.scss';
+
 export const NewsList = () => {
   const { news } = useNews();
   const filter = useSelector(selectFilter);
@@ -28,14 +31,18 @@ export const NewsList = () => {
   const filteredNews = onFilterNews();
 
   return (
-    <ol>
-      {filteredNews.map(item => {
-        return (
-          <li key={item.id}>
-            <NewsArticle news={item} />
-          </li>
-        );
-      })}
-    </ol>
+    <>
+      <p className={classes.counter}>Results: {filteredNews.length}</p>
+
+      <Grid container className={classes.list}>
+        {filteredNews.map(item => {
+          return (
+            <Grid key={item.id} item className={classes.item}>
+              <NewsArticle news={item} />
+            </Grid>
+          );
+        })}
+      </Grid>
+    </>
   );
 };
