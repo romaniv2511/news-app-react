@@ -29,10 +29,11 @@ const ArticleDetails = () => {
           sx={{ height: '245px' }}
           image={imageUrl}
           title={title}
+          component="div"
         ></CardMedia>
       </Card>
       <Container
-        sx={{ mt: '-95px', mb: '35px', backgroundColor: '#fff', py: '35px' }}
+        sx={{ mt: '-95px', mb: '35px', backgroundColor: '#fff', py: '50px' }}
       >
         <Typography
           variant="h1"
