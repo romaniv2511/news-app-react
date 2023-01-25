@@ -1,18 +1,17 @@
 import moment from 'moment';
 import { useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 import { selectFilter } from 'redux/filter/filterSelectors';
 import { Hightlight } from 'services/Highlight';
-
-import { Link } from '@mui/material';
+import { Card, Typography, Box } from '@mui/material';
 import { CalendarToday } from '@mui/icons-material';
 
 import classes from './NewsArticle.module.scss';
 
 export const NewsArticle = ({ news }) => {
-  const { title, summary, imageUrl, publishedAt, url } = news;
+  const { id, title, summary, imageUrl, publishedAt } = news;
   const filter = useSelector(selectFilter);
-  // const slicedSummary =
-  //   summary?.length < 160 ? summary : `${summary.slice(0, 160)}...`;
+
   const light = text => {
     return Hightlight(filter, text);
   };
@@ -20,26 +19,32 @@ export const NewsArticle = ({ news }) => {
   const date = Date.parse(publishedAt);
   const convertedDate = moment(date).format('MMMM Do, YYYY');
 
+  const location = useLocation();
+
   return (
-    <article className={classes.card}>
-      <div className={classes.image}>
+    <Card sx={{ height: '100%' }}>
+      <Box className={classes.image}>
         <img src={imageUrl} alt={title} />
-      </div>
+      </Box>
       <div className={classes.textBox}>
-        <p className={classes.date}>
+        <Typography sx={{ mb: '24px' }} className={classes.date}>
           <CalendarToday fontSize="small" /> {convertedDate}
-        </p>
-        <h2>{light(title)}</h2>
-        <p>{light(summary)}</p>
+        </Typography>
+        <Typography
+          variant="h2"
+          sx={{ mb: '20px', fontSize: '24px', lineHeight: '1.2' }}
+        >
+          {light(title)}
+        </Typography>
+        <Typography>{light(summary)}</Typography>
         <Link
-          href={url}
-          target="_blank"
-          rel="noopener, noreferrer"
+          to={`/articles/${id}`}
+          state={{ from: location }}
           className={classes.link}
         >
           Rear more &#10132;
         </Link>
       </div>
-    </article>
+    </Card>
   );
 };

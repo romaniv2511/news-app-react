@@ -1,0 +1,12 @@
+.link {
+  margin-top: 35px;
+
+  color: #363636;
+
+  font-weight: 700;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: lightgrey;
+  }
+}

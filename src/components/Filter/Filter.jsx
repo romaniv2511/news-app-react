@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { changeFilter } from 'redux/filter/filterSlice';
 
@@ -7,6 +8,15 @@ import styles from './Filter.module.scss';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  searchParams.get('query');
+
+  const handleChange = e => {
+    const value = e.target.value.trim();
+    dispatch(changeFilter(value));
+    setSearchParams({ query: value });
+  };
+
   return (
     <>
       <p className={styles.label}>Filter by keywords</p>
@@ -14,7 +24,7 @@ export const Filter = () => {
         className={styles.input}
         name="filterByKeys"
         type="text"
-        onChange={e => dispatch(changeFilter(e.target.value.trim()))}
+        onChange={handleChange}
         startAdornment={
           <InputAdornment position="start">
             <Search />

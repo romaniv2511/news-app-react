@@ -4,8 +4,7 @@ import { fetchNews } from 'redux/news/newsOperations';
 import { useNews } from 'hooks/useNews';
 import { Filter } from 'components/Filter/Filter';
 import { NewsList } from 'components/NewsList/NewsList';
-
-import classes from './Home.module.scss';
+import { Container } from '@mui/material';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,10 +13,13 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchNews());
   }, [dispatch]);
+
   const isVisibleNews = !isLoading && !error;
 
   return (
-    <div className={classes.container}>
+    <Container
+      sx={{ ml: 'auto', mr: 'auto', p: '50px 75px', maxWidth: '1440px' }}
+    >
       {isLoading && <p>Loading...</p>}
       {isVisibleNews && (
         <>
@@ -27,7 +29,7 @@ const Home = () => {
         </>
       )}
       {error && <p>Oops, something wrong!</p>}
-    </div>
+    </Container>
   );
 };
 
