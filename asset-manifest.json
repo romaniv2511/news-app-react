@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/news-app-react/static/css/main.448cf778.css",
+    "main.js": "/news-app-react/static/js/main.c9480656.js",
+    "static/css/67.5bc945f4.chunk.css": "/news-app-react/static/css/67.5bc945f4.chunk.css",
+    "static/js/67.3e7566fb.chunk.js": "/news-app-react/static/js/67.3e7566fb.chunk.js",
+    "static/css/916.77611cd8.chunk.css": "/news-app-react/static/css/916.77611cd8.chunk.css",
+    "static/js/916.8857a03c.chunk.js": "/news-app-react/static/js/916.8857a03c.chunk.js",
+    "static/js/805.2fe37136.chunk.js": "/news-app-react/static/js/805.2fe37136.chunk.js",
+    "static/js/197.ff966c2b.chunk.js": "/news-app-react/static/js/197.ff966c2b.chunk.js",
+    "static/js/862.74e900ab.chunk.js": "/news-app-react/static/js/862.74e900ab.chunk.js",
+    "index.html": "/news-app-react/index.html",
+    "main.448cf778.css.map": "/news-app-react/static/css/main.448cf778.css.map",
+    "main.c9480656.js.map": "/news-app-react/static/js/main.c9480656.js.map",
+    "67.5bc945f4.chunk.css.map": "/news-app-react/static/css/67.5bc945f4.chunk.css.map",
+    "67.3e7566fb.chunk.js.map": "/news-app-react/static/js/67.3e7566fb.chunk.js.map",
+    "916.77611cd8.chunk.css.map": "/news-app-react/static/css/916.77611cd8.chunk.css.map",
+    "916.8857a03c.chunk.js.map": "/news-app-react/static/js/916.8857a03c.chunk.js.map",
+    "805.2fe37136.chunk.js.map": "/news-app-react/static/js/805.2fe37136.chunk.js.map",
+    "197.ff966c2b.chunk.js.map": "/news-app-react/static/js/197.ff966c2b.chunk.js.map",
+    "862.74e900ab.chunk.js.map": "/news-app-react/static/js/862.74e900ab.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.448cf778.css",
+    "static/js/main.c9480656.js"
+  ]
+}

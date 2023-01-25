@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunknews=self.webpackChunknews||[]).push([[805],{9805:function(e,n,s){s.r(n);var t=s(184);n.default=function(){return(0,t.jsx)("div",{children:"Page doesn't exsist!"})}}}]);
+//# sourceMappingURL=805.2fe37136.chunk.js.map

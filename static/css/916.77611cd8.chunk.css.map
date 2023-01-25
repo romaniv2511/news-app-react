@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/916.77611cd8.chunk.css","mappings":"AAAA,4BAGE,cAEA,gBAJA,gBAKA,qBACA,oEAEE","sources":["pages/ArticleDetails.module.scss"],"sourcesContent":[".link {\n  margin-top: 35px;\n\n  color: #363636;\n\n  font-weight: 700;\n  text-decoration: none;\n  &:hover,\n  &:focus {\n    color: lightgrey;\n  }\n}\n"],"names":[],"sourceRoot":""}
