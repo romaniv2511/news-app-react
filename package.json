@@ -2,7 +2,7 @@
   "name": "news",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://romaniv2511.github.io/news-app-react",
+  "homepage": "https://romaniv2511.github.io/news-app-react/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
