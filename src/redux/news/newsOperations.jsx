@@ -9,7 +9,6 @@ export const fetchNews = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get('/v3/articles?_limit=20');
-      console.log(data);
       const news = data.map(
         ({ id, imageUrl, title, summary, url, publishedAt }) => ({
           id,

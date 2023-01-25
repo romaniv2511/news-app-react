@@ -25,6 +25,7 @@ export const NewsList = () => {
       const isFiltered = matchesTitle.length > 0 || matchesSummary.length > 0;
 
       if (isFiltered) return currentNews;
+      return null;
     });
   };
 
